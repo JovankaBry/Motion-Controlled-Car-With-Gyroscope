@@ -1,4 +1,4 @@
-# Embedded-System-Projekt
+# Embedded-System-Project
 A motion-controlled car project using an MPU6050 gyroscope connected via wire to an Arduino, where hand tilts control the car’s direction.
 
 How It Works:
