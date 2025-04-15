@@ -25,3 +25,6 @@ Features:
 -Wired I2C communication for low latency
 -Simple and intuitive control system
 -Expandable for wireless control (e.g., using NRF24L01 or Bluetooth)
+
+Library:
+For the sensor MPU-6050 a library is needed and the right library for that is MPU6050_Light from rfetick "https://github.com/rfetick/MPU6050_light"
