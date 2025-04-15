@@ -29,9 +29,11 @@ void loop() {
   //TURN LEFT
   digitalWrite(motor1,LOW);
   digitalWrite(motor2,LOW);
-  digitalWrite(motor4,HIGH);
   digitalWrite(motor4,LOW);
+  digitalWrite(motor4,HIGH);
   Serial.println("TURNING LEFT....");
+
+  //TURN LEFT WHILE GOING STRAIGHT
 
   delay(5000);
 
