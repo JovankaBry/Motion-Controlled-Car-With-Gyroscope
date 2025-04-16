@@ -1,8 +1,8 @@
 int motor1 = 2;
 int motor2 = 3;
 
-int motor3 = 4;
-int motor4 = 5;
+int motor3 = 5;
+int motor4 = 6;
 
 void setup() {
   // put your setup code here, to run once:
@@ -29,10 +29,23 @@ void loop() {
   //TURN LEFT
   digitalWrite(motor1,LOW);
   digitalWrite(motor2,LOW);
-  digitalWrite(motor4,HIGH);
   digitalWrite(motor4,LOW);
-  Serial.println("TURNING LEFT....");
+  digitalWrite(motor4,HIGH);
+  Serial.println("TURNING LEFT SPIN....");
+ 
+  //TURN LEFT WHILE GOING STRAIGHT
+  digitalWrite(motor1,LOW);
+  digitalWrite(motor2,LOW);
+  digitalWrite(motor4,LOW);
+  digitalWrite(motor4,HIGH);
+  delay(200);
 
+  //LEFT WHEEL
+  digitalWrite(motor1,HIGH);
+  digitalWrite(motor2,LOW);
+  delay(250);
+
+  Serial.println("TURNING LEFT....");
   delay(5000);
 
   //TURN RIGHT
@@ -58,7 +71,7 @@ void loop() {
   digitalWrite(motor2, LOW);
   digitalWrite(motor3, LOW);
   digitalWrite(motor4, LOW);
-  Serial.println("STOP....");
+  Serial.println("STOP for 10 Seconds");
 
   delay(10000);
 
