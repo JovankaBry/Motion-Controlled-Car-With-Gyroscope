@@ -1,0 +1,28 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+
+RF24 radio(9, 8); // CE, CSN (from your image)
+
+const byte address[6] = "00001";
+
+void setup() {
+  Serial.begin(9600);
+  radio.begin();
+  radio.setPALevel(RF24_PA_LOW);
+  radio.setChannel(76);
+  radio.setDataRate(RF24_250KBPS); // More stable
+  radio.openWritingPipe(address);
+  radio.stopListening();
+}
+
+void loop() {
+  const char text[] = "Hello from Nano";
+  bool ok = radio.write(&text, sizeof(text));
+  if (ok) {
+    Serial.println("Message sent!");
+  } else {
+    Serial.println("Failed to send");
+  }
+  delay(1000);
+}
