@@ -1,0 +1,29 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+
+RF24 radio(9, 8); // CE, CSN (from your image)
+
+const byte address[6] = "00001";
+
+const int buttonPin = 2;
+bool buttonState = 0;
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);
+  Serial.begin(9600);
+  radio.begin();
+  radio.setPALevel(RF24_PA_LOW);
+  radio.setChannel(76);
+  radio.setDataRate(RF24_250KBPS); // More stable
+  radio.openWritingPipe(address);
+  radio.stopListening();
+}
+
+void loop() {
+  buttonState = digitalRead(buttonPin); // Read button state
+  bool ledState = (buttonState == LOW) ? HIGH : LOW;  // Button pressed → LED ON
+  
+  radio.write(&ledState, sizeof(ledState));  // Send LED state
+  delay(100);  // Small delay to stabilize communication
+}
