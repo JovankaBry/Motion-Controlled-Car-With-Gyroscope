@@ -1,1 +1,0 @@
-In Prototype V2, the wallthickness of the 3D print is reconsidered, now the thickness is 2mm. Prototype V1 must be tested first, to ensure if the 3D works.
