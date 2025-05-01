@@ -5,7 +5,7 @@
 #include <MPU6050_light.h>
 
 // NRF24 Setup
-RF24 radio(9, 10); // CE, CSN on Uno
+RF24 radio(7, 8); // CE, CSN on Uno
 const byte address[6] = "00001";
 
 // MPU6050 Setup
