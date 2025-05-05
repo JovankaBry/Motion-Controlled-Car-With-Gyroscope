@@ -1,19 +1,19 @@
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
-#include "Wire.h"
+#include <Wire.h>
 #include <MPU6050_light.h>
 #include <U8g2lib.h>
 
 // NRF24 Setup
-RF24 radio(7, 8); // CE, CSN on Uno/Nano
+RF24 radio(7, 8); // CE, CSN for Uno/Nano
 const byte address[6] = "00001";
 
 // MPU6050 Setup
 MPU6050 mpu(Wire);
 unsigned long timer = 0;
 
-// OLED Setup (page buffer mode - fast and memory efficient)
+// OLED Setup (page buffer mode = _1_)
 U8G2_SH1106_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
 // Data structure to send
@@ -34,14 +34,14 @@ void setup() {
   byte status = mpu.begin();
   Serial.print(F("MPU6050 status: "));
   Serial.println(status);
-  while(status != 0) { } // Stop if connection fails
+  while(status != 0) { } // Stop if MPU6050 fails
 
   Serial.println(F("Calculating offsets, do not move MPU6050"));
   delay(1000);
-  mpu.calcOffsets(); // Calibrate gyro and accelerometer
+  mpu.calcOffsets(); // Gyro calibration
   Serial.println("Done!\n");
 
-  // Display "Device Is Ready" on OLED
+  // Show "Device is Ready" message once
   u8g2.firstPage();
   do {
     u8g2.setFont(u8g2_font_ncenB08_tr);
@@ -58,7 +58,7 @@ void setup() {
 void loop() {
   mpu.update();
 
-  if ((millis() - timer) > 20) { // Send data every 20ms
+  if ((millis() - timer) > 20) { // Every 20ms
     GyroData data;
     data.angleX = mpu.getAngleX();
     data.angleY = mpu.getAngleY();
@@ -67,7 +67,7 @@ void loop() {
     // Send data via nRF24
     bool success = radio.write(&data, sizeof(data));
 
-    // Debug output on Serial Monitor
+    // Serial debug output
     Serial.print("X: ");
     Serial.print(data.angleX);
     Serial.print(" Y: ");
@@ -77,7 +77,28 @@ void loop() {
     Serial.print(" Transmission: ");
     Serial.println(success ? "OK" : "Failed");
 
+    // OLED update with gyro data and transmission status
+    u8g2.firstPage();
+    do {
+      u8g2.setFont(u8g2_font_6x10_tr); // Small font for fitting more lines
+
+      u8g2.setCursor(0, 12);
+      u8g2.print("X: ");
+      u8g2.print(data.angleX, 1);
+
+      u8g2.setCursor(0, 24);
+      u8g2.print("Y: ");
+      u8g2.print(data.angleY, 1);
+
+      u8g2.setCursor(0, 36);
+      u8g2.print("Z: ");
+      u8g2.print(data.angleZ, 1);
+
+      u8g2.setCursor(0, 48);
+      u8g2.print("Transmission: ");
+      u8g2.print(success ? "OK" : "Fail");
+    } while (u8g2.nextPage());
+
     timer = millis();
   }
 }
-
