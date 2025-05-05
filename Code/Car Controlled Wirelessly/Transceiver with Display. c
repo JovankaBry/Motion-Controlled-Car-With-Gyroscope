@@ -16,6 +16,10 @@ unsigned long timer = 0;
 // OLED Setup (page buffer mode = _1_)
 U8G2_SH1106_128X64_NONAME_1_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE);
 
+// Button Setup
+const int buttonPin = 3; // Change to your button pin
+bool buttonPressed = false;
+
 // Data structure to send
 struct GyroData {
   float angleX;
@@ -26,6 +30,7 @@ struct GyroData {
 void setup() {
   Serial.begin(9600);
   Wire.begin();
+  pinMode(buttonPin, INPUT_PULLUP); // Button with internal pull-up
 
   // Initialize OLED
   u8g2.begin();
@@ -36,36 +41,50 @@ void setup() {
   Serial.println(status);
   while(status != 0) { } // Stop if MPU6050 fails
 
- u8g2.firstPage();
+  // Show welcome message until button is pressed
+  bool waitingForButton = true;
+  while(waitingForButton) {
+    u8g2.firstPage();
+    do {
+      u8g2.setFont(u8g2_font_ncenB08_tr);
+      u8g2.drawStr(5, 15, "Herzlich Wilkommen");
+      u8g2.drawStr(23, 30, "Bitte Druecken");
+      u8g2.drawStr(30, 45, "zum Starten");
+    } while (u8g2.nextPage());
+
+    // Check for button press (LOW when pressed with PULLUP)
+    if(digitalRead(buttonPin) == LOW) {
+      delay(50); // Simple debounce
+      if(digitalRead(buttonPin) == LOW) {
+        waitingForButton = false;
+        buttonPressed = true;
+      }
+    }
+    
+    // Let the MPU update in background
+    mpu.update();
+  }
+
+  // Show calibration message
+  u8g2.firstPage();
   do {
     u8g2.setFont(u8g2_font_ncenB08_tr);
     u8g2.drawStr(5, 30, "Calculating MPU6050");
-    u8g2.drawStr(20, 45, "DO NOT MOVE!");
+    u8g2.drawStr(20, 45, "DO NOT MOVE!!!");
   } while (u8g2.nextPage());
-
-   unsigned long splashStartt = millis();
-  while (millis() - splashStartt < 2500) {
-  // Let the MPU update in background if needed
-  mpu.update();
-}
 
   Serial.println(F("Calculating offsets, do not move MPU6050"));
   delay(1000);
   mpu.calcOffsets(); // Gyro calibration
   Serial.println("Done!\n");
 
-  // Show "Device is Ready" message once
+  // Show "Device is Ready" message
   u8g2.firstPage();
   do {
     u8g2.setFont(u8g2_font_ncenB08_tr);
     u8g2.drawStr(20, 30, "Device Is Ready");
   } while (u8g2.nextPage());
-
-  unsigned long splashStart = millis();
-  while (millis() - splashStart < 5000) {
-  // Let the MPU update in background if needed
-  mpu.update();
-}
+  delay(2000);
 
   // Initialize radio
   radio.begin();
@@ -99,7 +118,7 @@ void loop() {
     // OLED update with gyro data and transmission status
     u8g2.firstPage();
     do {
-      u8g2.setFont(u8g2_font_6x10_tr); // Small font for fitting more lines
+      u8g2.setFont(u8g2_font_6x10_tr);
 
       u8g2.setCursor(0, 12);
       u8g2.print("X: ");
@@ -114,7 +133,7 @@ void loop() {
       u8g2.print(data.angleZ, 1);
 
       u8g2.setCursor(0, 48);
-      u8g2.print("Transmission: ");
+      u8g2.print("TX: ");
       u8g2.print(success ? "OK" : "Fail");
     } while (u8g2.nextPage());
 
