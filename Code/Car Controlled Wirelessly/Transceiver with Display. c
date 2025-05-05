@@ -36,6 +36,19 @@ void setup() {
   Serial.println(status);
   while(status != 0) { } // Stop if MPU6050 fails
 
+ u8g2.firstPage();
+  do {
+    u8g2.setFont(u8g2_font_ncenB08_tr);
+    u8g2.drawStr(5, 30, "Calculating MPU6050");
+    u8g2.drawStr(20, 45, "DO NOT MOVE!");
+  } while (u8g2.nextPage());
+
+   unsigned long splashStartt = millis();
+  while (millis() - splashStartt < 2500) {
+  // Let the MPU update in background if needed
+  mpu.update();
+}
+
   Serial.println(F("Calculating offsets, do not move MPU6050"));
   delay(1000);
   mpu.calcOffsets(); // Gyro calibration
