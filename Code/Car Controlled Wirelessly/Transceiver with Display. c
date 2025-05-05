@@ -48,6 +48,12 @@ void setup() {
     u8g2.drawStr(20, 30, "Device Is Ready");
   } while (u8g2.nextPage());
 
+  unsigned long splashStart = millis();
+  while (millis() - splashStart < 5000) {
+  // Let the MPU update in background if needed
+  mpu.update();
+}
+
   // Initialize radio
   radio.begin();
   radio.openWritingPipe(address);
