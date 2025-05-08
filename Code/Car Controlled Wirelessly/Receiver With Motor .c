@@ -60,21 +60,45 @@ void moveBackward() {
 }
 
 void turnRight() {
-  // Left side forward, right side backward (sharp turn)
-  digitalWrite(motor1, LOW);
-  digitalWrite(motor2, HIGH);
-  digitalWrite(motor3, LOW);
-  digitalWrite(motor4, HIGH);
-  Serial.println("Turning Right");
+  // Left motors ON (full), Right motors pulsed (simulate slower)
+  for (int i = 0; i < 5; i++) {
+    // Left side ON
+    digitalWrite(motor1, LOW);
+    digitalWrite(motor2, HIGH);
+    
+    // Right side short ON
+    digitalWrite(motor3, HIGH);
+    digitalWrite(motor4, LOW);
+    delay(50);  // right side ON for 50 ms
+
+    // Right side OFF
+    digitalWrite(motor3, LOW);
+    digitalWrite(motor4, LOW);
+    delay(100); // pause right side
+  }
+  stopMotors();
+  Serial.println("Turning Right (Smooth Forward Curve)");
 }
 
 void turnLeft() {
-  // Right side forward, left side backward (sharp turn)
-  digitalWrite(motor1, HIGH);
-  digitalWrite(motor2, LOW);
-  digitalWrite(motor3, HIGH);
-  digitalWrite(motor4, LOW);
-  Serial.println("Turning Left");
+  // Right motors ON (full), Left motors pulsed (simulate slower)
+  for (int i = 0; i < 5; i++) {
+    // Right side ON
+    digitalWrite(motor3, HIGH);
+    digitalWrite(motor4, LOW);
+
+    // Left side short ON
+    digitalWrite(motor1, LOW);
+    digitalWrite(motor2, HIGH);
+    delay(50);  // left side ON for 50 ms
+
+    // Left side OFF
+    digitalWrite(motor1, LOW);
+    digitalWrite(motor2, LOW);
+    delay(100); // pause left side
+  }
+  stopMotors();
+  Serial.println("Turning Left (Smooth Forward Curve)");
 }
 
 void loop() {
