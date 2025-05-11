@@ -1,0 +1,23 @@
+Altium Designer Pick and Place Locations
+C:\Users\Ruben\Documents\Git\Motion-Controlled-Car-With-Gyroscope\Schematic\Transmitter with MPU6050\Project Outputs for PCB_Motor\Pick Place for PCB1.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       12.05.25
+Time:       00:33
+Revision:   e57cbea98e8349eda09d26891e142ab473e8332a
+Variant:    No variations
+Units used: mil
+
+Designator Comment          Layer    Footprint             Center-X(mil) Center-Y(mil) Rotation Description                                                                                              
+R2         "2x 10KR"        TopLayer FP-ZOR-25-R-52-0R-MFG 405.512       1083.661      90       "RES 0 OHM JUMPER 1/4W AXIAL"                                                                            
+R1         ""               TopLayer FP-ZOR-25-R-52-0R-MFG 247.047       1084.646      90       "RES 0 OHM JUMPER 1/4W AXIAL"                                                                            
+J3         "Header MPU6050" TopLayer 61300811821           1379.921      478.346       270      ""                                                                                                       
+C1         "100uF 50V"      TopLayer FP-EEU-FR1H101B-MFG   1438.976      1474.409      0        "CAP ALUM 100UF 20% 50V RADIAL"                                                                          
+J5         "Header OLED"    TopLayer FP-SSW-104-02-G-S-MFG 1543.307      846.457       270      "SSW-104-02-G-S Board to Board & Mezzanine Connectors Tiger Buy Socket Strip with PCB Tails, .100 Pitch" 
+SW1        Button           TopLayer FP-2-1825910-7-MFG    409.449       1483.268      270      "SWITCH TACTILE SPST-NO 0.05A 24V"                                                                       
+J6         691214110002     TopLayer 691214110002          410.433       201.772       0        ""                                                                                                       
+J4         "nRF24 Header"   TopLayer 61300821821           1218.504      1145.669      180      ""                                                                                                       
+J2         SSW-115-01-T-S   TopLayer FP-SSW-115-01-T-S-MFG 690.945       846.654       270      "CONN RCPT 15POS 0.1 TIN PCB"                                                                            
+J1         SSW-115-01-T-S   TopLayer FP-SSW-115-01-T-S-MFG 88.583        843.701       270      "CONN RCPT 15POS 0.1 TIN PCB"                                                                            
