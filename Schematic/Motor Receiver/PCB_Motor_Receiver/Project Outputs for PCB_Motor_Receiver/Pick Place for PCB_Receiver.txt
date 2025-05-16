@@ -1,0 +1,23 @@
+Altium Designer Pick and Place Locations
+C:\Users\Ruben\Documents\Git\Motion-Controlled-Car-With-Gyroscope\Schematic\Motor Receiver\PCB_Motor_Receiver\Project Outputs for PCB_Motor_Receiver\Pick Place for PCB_Receiver.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       17.05.25
+Time:       01:28
+Revision:   42f8b8a7a27b5fefbdaf96679050a54d5d40d6b5
+Variant:    No variations
+Units used: mil
+
+Designator Comment             Layer    Footprint             Center-X(mil) Center-Y(mil) Rotation Description                     
+R2         "2x 10KR"           TopLayer FP-ZOR-25-R-52-0R-MFG 5570.866      2981.299      270      "RES 0 OHM JUMPER 1/4W AXIAL"   
+R1         ""                  TopLayer FP-ZOR-25-R-52-0R-MFG 5419.291      2981.299      90       "RES 0 OHM JUMPER 1/4W AXIAL"   
+J7         "Motor 2,3"         TopLayer 691214110002          4894.685      2419.291      270      ""                              
+J6         "Charging Module"   TopLayer 691214110002          5484.252      3588.583      180      ""                              
+J5         "Motor 5,6"         TopLayer 691214110002          4895.669      2862.205      270      ""                              
+J4         "Battery Connector" TopLayer 691214110002          5498.032      2389.764      0        ""                              
+J3         "nRF24 Header"      TopLayer 61300821821           4891.732      3215.551      180      ""                              
+J2         SSW-115-01-T-S      TopLayer FP-SSW-115-01-T-S-MFG 5789.370      2958.465      270      "CONN RCPT 15POS 0.1 TIN PCB"   
+J1         SSW-115-01-T-S      TopLayer FP-SSW-115-01-T-S-MFG 5189.961      2960.039      270      "CONN RCPT 15POS 0.1 TIN PCB"   
+C1         "100uF 50V"         TopLayer FP-EEU-FR1H101B-MFG   4914.370      3550.197      0        "CAP ALUM 100UF 20% 50V RADIAL" 
