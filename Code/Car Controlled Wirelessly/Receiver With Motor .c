@@ -50,6 +50,33 @@ void moveForward() {
   Serial.println("Moving Forward");
 }
 
+void moveForwardRight() {
+  // Nyalakan roda depan kiri dulu
+  digitalWrite(motor1, LOW);   // Depan kiri maju
+  digitalWrite(motor2, HIGH);  // Belakang kiri mundur (untuk maju)
+  
+  // Delay sebentar sebelum nyalakan roda kanan
+  delay(100); // Delay 100ms
+
+  digitalWrite(motor3, HIGH);  // Depan kanan maju
+  digitalWrite(motor4, LOW);   // Belakang kanan mundur (untuk maju)
+
+  Serial.println("Moving Forward Right (dengan delay motor3)");
+}
+
+void moveForwardLeft() {
+  // Nyalakan sisi kanan dulu
+  digitalWrite(motor3, HIGH);  // Depan kanan maju
+  digitalWrite(motor4, LOW);   // Belakang kanan bantu maju
+
+  delay(100); // Delay sebelum sisi kiri nyala
+
+  digitalWrite(motor1, LOW);   // Depan kiri maju
+  digitalWrite(motor2, HIGH);  // Belakang kiri bantu maju
+
+  Serial.println("Moving Forward Left");
+}
+
 void moveBackward() {
   // Inverse of your forward pattern
   digitalWrite(motor1, HIGH);
@@ -57,6 +84,32 @@ void moveBackward() {
   digitalWrite(motor3, LOW);
   digitalWrite(motor4, HIGH);
   Serial.println("Moving Backward");
+}
+
+void moveBackwardRight() {
+  // Nyalakan sisi kiri dulu (mundur)
+  digitalWrite(motor1, HIGH);  // Depan kiri mundur
+  digitalWrite(motor2, LOW);   // Belakang kiri bantu mundur
+
+  delay(100); // Delay sebelum sisi kanan nyala
+
+  digitalWrite(motor3, LOW);   // Depan kanan mundur
+  digitalWrite(motor4, HIGH);  // Belakang kanan bantu mundur
+
+  Serial.println("Moving Backward Right");
+}
+
+void moveBackwardLeft() {
+  // Nyalakan sisi kanan dulu (mundur)
+  digitalWrite(motor3, LOW);   // Depan kanan mundur
+  digitalWrite(motor4, HIGH);  // Belakang kanan bantu mundur
+
+  delay(100); // Delay sebelum sisi kiri nyala
+
+  digitalWrite(motor1, HIGH);  // Depan kiri mundur
+  digitalWrite(motor2, LOW);   // Belakang kiri bantu mundur
+
+  Serial.println("Moving Backward Left");
 }
 
 void turnRight() {
@@ -89,19 +142,32 @@ void loop() {
 
     // angleX = forward/backward tilt
     // angleY = left/right tilt
-    if (data.angleX > 15) {
+    if (data.angleX > 15 && data.angleY > 15) {
+      moveForwardRight();
+    }
+    else if (data.angleX > 15 && data.angleY < -15) {
+      moveForwardLeft();
+    }
+    else if (data.angleX < -15 && data.angleY > 15) {
+      moveBackwardRight();
+    }
+    else if (data.angleX < -15 && data.angleY < -15) {
+      moveBackwardLeft();
+    }
+    else if (data.angleX > 15) {
       moveForward();
-    } 
+    }
     else if (data.angleX < -15) {
       moveBackward();
-    } 
+    }
     else if (data.angleY > 15) {
       turnRight();
-    } 
+    }
     else if (data.angleY < -15) {
       turnLeft();
     }
     else {
+      stopMotors();
       Serial.println("Stopped");
     }
   }
