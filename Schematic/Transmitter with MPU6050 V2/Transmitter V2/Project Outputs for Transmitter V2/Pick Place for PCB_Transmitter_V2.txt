@@ -1,0 +1,32 @@
+Altium Designer Pick and Place Locations
+C:\Users\Ruben\Documents\Git\Motion-Controlled-Car-With-Gyroscope\Schematic\Transmitter with MPU6050 V2\Transmitter V2\Project Outputs for Transmitter V2\Pick Place for PCB_Transmitter_V2.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       22.05.25
+Time:       00:16
+Revision:   48883da845381f66511f0cf82e85c37ad537a851
+Variant:    No variations
+Units used: mil
+
+Designator Comment        Layer    Footprint             Center-X(mil) Center-Y(mil) Rotation Description                                                                                              
+U1         AMS1117-3.3    TopLayer FP-AMS1117-IPC_C      1870.276      2215.000      0        "LDO Voltage Regulators 1A, 3.3V"                                                                        
+SW1        2-1825910-7    TopLayer FP-2-1825910-7-MFG    2680.000      910.000       90       "SWITCH TACTILE SPST-NO 0.05A 24V"                                                                       
+R4         10kR           TopLayer FP-RC1206-MFG         2335.000      2560.000      90       "RES SMD 0 OHM JUMPER 1/4W 1206"                                                                         
+R3         10kR           TopLayer FP-RC1206-MFG         2335.000      2190.000      90       "RES SMD 0 OHM JUMPER 1/4W 1206"                                                                         
+R2         47R            TopLayer FP-RC1206-MFG         2720.000      2105.000      90       "RES SMD 0 OHM JUMPER 1/4W 1206"                                                                         
+R1         47R            TopLayer FP-RC1206-MFG         2720.000      1925.000      270      "RES SMD 0 OHM JUMPER 1/4W 1206"                                                                         
+J6         691214110002   TopLayer 691214110002          1613.189      1425.000      270      ""                                                                                                       
+J5         61300811821    TopLayer 61300811821           1835.000      1155.000      180      ""                                                                                                       
+J4         SSW-104-02-G-S TopLayer FP-SSW-104-02-G-S-MFG 1455.000      1840.000      90       "SSW-104-02-G-S Board to Board & Mezzanine Connectors Tiger Buy Socket Strip with PCB Tails, .100 Pitch" 
+J3         61300821821    TopLayer 61300821821           1805.000      1705.000      0        ""                                                                                                       
+J2         SSW-115-01-T-S TopLayer FP-SSW-115-01-T-S-MFG 2815.000      2030.000      270      "CONN RCPT 15POS 0.1 TIN PCB"                                                                            
+J1         SSW-115-01-T-S TopLayer FP-SSW-115-01-T-S-MFG 2215.000      2030.000      270      "CONN RCPT 15POS 0.1 TIN PCB"                                                                            
+DS2        "Green LED"    TopLayer AVAG-HSMX-C170_V      2410.000      1160.000      270      "Chip LED, Green, 2.2 V, -40 to 85 degC, 2-Pin SMD, Pb-Free, Tape and Reel"                              
+DS1        "Red LED"      TopLayer AVAG-HSMX-C170_V      2410.000      705.000       270      "Chip LED, Green, 2.2 V, -40 to 85 degC, 2-Pin SMD, Pb-Free, Tape and Reel"                              
+C5         10uF           TopLayer FP-C0805C-DG-MFG      1660.000      2280.000      270      "CAP CER 10UF 10V X5R 0805"                                                                              
+C4         10uF           TopLayer FP-C0805C-DG-MFG      1660.000      2145.000      270      "CAP CER 10UF 10V X5R 0805"                                                                              
+C3         100nF          TopLayer FP-CC0805-0_85-MFG    2335.000      2375.000      270      "CAP CER 0.1UF 16V X7R 0805"                                                                             
+C2         100nF          TopLayer FP-CC0805-0_85-MFG    1690.000      1925.000      180      "CAP CER 0.1UF 16V X7R 0805"                                                                             
+C1         10uF           TopLayer FP-C0805C-DG-MFG      1935.000      1935.000      180      "CAP CER 10UF 10V X5R 0805"                                                                              
