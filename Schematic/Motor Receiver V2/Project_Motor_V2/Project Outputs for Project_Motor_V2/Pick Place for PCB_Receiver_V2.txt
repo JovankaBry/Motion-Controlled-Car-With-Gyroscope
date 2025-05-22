@@ -1,0 +1,28 @@
+Altium Designer Pick and Place Locations
+C:\Users\Ruben\Documents\Git\Motion-Controlled-Car-With-Gyroscope\Schematic\Motor Receiver V2\Project_Motor_V2\Project Outputs for Project_Motor_V2\Pick Place for PCB_Receiver_V2.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       23.05.25
+Time:       00:07
+Revision:   d0e459204ab35c8874db227b4703eb32329a815f
+Variant:    No variations
+Units used: mil
+
+Designator Comment             Layer    Footprint             Center-X(mil) Center-Y(mil) Rotation Description                                                                 
+U1         AMS1117-3.3         TopLayer FP-AMS1117-IPC_C      3875.000      3415.000      0        "LDO Voltage Regulators 1A, 3.3V"                                           
+R2         47R                 TopLayer FP-RC1206-MFG         4690.000      2715.000      90       "RES SMD 0 OHM JUMPER 1/4W 1206"                                            
+R1         47R                 TopLayer FP-RC1206-MFG         4690.000      2920.000      270      "RES SMD 0 OHM JUMPER 1/4W 1206"                                            
+J6         "Motor 5,6"         TopLayer 691214110002          5070.000      3581.102      90       ""                                                                          
+J5         "Motor 2,3"         TopLayer 691214110002          5061.811      3220.000      90       ""                                                                          
+J4         "Battery Connector" TopLayer 691214110002          3870.000      2651.102      270      ""                                                                          
+J3         61300821821         TopLayer 61300821821           3815.000      2960.000      0        ""                                                                          
+J2         SSW-115-01-T-S      TopLayer FP-SSW-115-01-T-S-MFG 4805.000      3235.000      270      "CONN RCPT 15POS 0.1 TIN PCB"                                               
+J1         SSW-115-01-T-S      TopLayer FP-SSW-115-01-T-S-MFG 4205.000      3235.000      270      "CONN RCPT 15POS 0.1 TIN PCB"                                               
+DS2        "Red LED"           TopLayer AVAG-HSMX-C170_V      4965.000      2680.000      0        "Chip LED, Green, 2.2 V, -40 to 85 degC, 2-Pin SMD, Pb-Free, Tape and Reel" 
+DS1        "Green LED"         TopLayer AVAG-HSMX-C170_V      5170.000      2680.000      0        "Chip LED, Green, 2.2 V, -40 to 85 degC, 2-Pin SMD, Pb-Free, Tape and Reel" 
+C4         10uF                TopLayer FP-C0805C-DG-MFG      3665.000      3485.000      270      "CAP CER 10UF 10V X5R 0805"                                                 
+C3         10uF                TopLayer FP-C0805C-DG-MFG      3665.000      3340.000      270      "CAP CER 10UF 10V X5R 0805"                                                 
+C2         100nF               TopLayer FP-CC0805-0_85-MFG    3845.000      3160.000      180      "CAP CER 0.1UF 16V X7R 0805"                                                
+C1         10uF                TopLayer FP-C0805C-DG-MFG      3685.000      3165.000      180      "CAP CER 10UF 10V X5R 0805"                                                 
